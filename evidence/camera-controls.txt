@@ -1,0 +1,17 @@
+auto-exposure current=8 step=9 default=8 writable=yes
+exposure-priority current=0 writable=yes
+exposure current=3 min=3 max=2047 step=1 default=3 writable=yes (disabled by automatic mode)
+zoom current=10 min=10 max=40 step=1 default=10 writable=yes
+pan-tilt current=0,0 min=-36000,-36000 max=36000,36000 step=3600,3600 default=0,0 writable=yes
+privacy current=0 writable=yes
+backlight current=1 min=0 max=4 step=1 default=1 writable=yes
+brightness current=128 min=0 max=255 step=1 default=128 writable=yes
+contrast current=128 min=0 max=255 step=1 default=128 writable=yes
+gain current=0 min=0 max=255 step=1 default=0 writable=yes (disabled by automatic mode)
+power-line current=2 min=1 max=2 step=1 default=2 writable=yes
+hue current=0 min=-128 max=128 step=1 default=0 writable=yes
+saturation current=128 min=0 max=255 step=1 default=128 writable=yes
+sharpness current=128 min=0 max=255 step=1 default=128 writable=yes
+gamma current=128 min=1 max=255 step=1 default=128 writable=yes
+white-balance current=4000 min=2000 max=7500 step=10 default=4000 writable=yes (disabled by automatic mode)
+auto-white-balance current=1 default=1 writable=yes

@@ -1,0 +1,32 @@
+BEFORE mic-volume=75.000% channel=0 writable=yes
+CHANGE mic-volume 74 exit=1
+mic-volume channel 0 readback mismatch
+mic-volume could not be completed
+RESTORE mic-volume 75 exit=0
+mic-volume=75.000% channel=0 writable=yes
+BEFORE mic-volume=75.000% channel=0 writable=yes
+CHANGE mic-volume 50 exit=0
+mic-volume=50.000% channel=0 writable=yes
+RESTORE mic-volume 75 exit=0
+mic-volume=75.000% channel=0 writable=yes
+BEFORE speaker-volume=100.000% channel=1 writable=yes
+speaker-volume=100.000% channel=2 writable=yes
+CHANGE speaker-volume 50 exit=0
+speaker-volume=50.174% channel=1 writable=yes
+speaker-volume=50.174% channel=2 writable=yes
+RESTORE speaker-volume 100 exit=0
+speaker-volume=100.000% channel=1 writable=yes
+speaker-volume=100.000% channel=2 writable=yes
+BEFORE mic-mute=off channel=0 writable=yes
+CHANGE mic-mute on exit=0
+mic-mute=on channel=0 writable=yes
+RESTORE mic-mute off exit=0
+mic-mute=off channel=0 writable=yes
+BEFORE speaker-mute=off channel=1 writable=yes
+speaker-mute=off channel=2 writable=yes
+CHANGE speaker-mute on exit=0
+speaker-mute=on channel=1 writable=yes
+speaker-mute=on channel=2 writable=yes
+RESTORE speaker-mute off exit=0
+speaker-mute=off channel=1 writable=yes
+speaker-mute=off channel=2 writable=yes

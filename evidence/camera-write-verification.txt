@@ -1,0 +1,32 @@
+CHANGE brightness: exit=0
+brightness current=129 min=0 max=255 step=1 default=128 writable=yes
+RESTORE brightness: exit=0
+brightness current=128 min=0 max=255 step=1 default=128 writable=yes
+CHANGE zoom: exit=1
+zoom write readback did not match
+RESTORE zoom: exit=0
+zoom current=10 min=10 max=40 step=1 default=10 writable=yes
+CHANGE zoom ['15']: exit=1
+zoom write readback did not match
+zoom current=13 min=10 max=40 step=1 default=10 writable=yes
+RESTORE zoom: exit=0
+zoom current=10 min=10 max=40 step=1 default=10 writable=yes
+CHANGE zoom ['20']: exit=0
+zoom current=20 min=10 max=40 step=1 default=10 writable=yes
+zoom current=20 min=10 max=40 step=1 default=10 writable=yes
+RESTORE zoom: exit=0
+zoom current=10 min=10 max=40 step=1 default=10 writable=yes
+CHANGE pan-tilt ['3600', '0']: exit=1
+pan-tilt write readback did not match
+pan-tilt current=0,0 min=-36000,-36000 max=36000,36000 step=3600,3600 default=0,0 writable=yes
+RESTORE pan-tilt: exit=0
+pan-tilt current=0,0 min=-36000,-36000 max=36000,36000 step=3600,3600 default=0,0 writable=yes
+['zoom', '20'] exit=0
+zoom current=20 min=10 max=40 step=1 default=10 writable=yes
+['pan-tilt', '3600', '0'] exit=0
+pan-tilt current=3600,0 min=-36000,-36000 max=36000,36000 step=3600,3600 default=0,0 writable=yes
+pan-tilt current=3600,0 min=-36000,-36000 max=36000,36000 step=3600,3600 default=0,0 writable=yes
+RESTORE ['pan-tilt', '0', '0'] exit=0
+pan-tilt current=0,0 min=-36000,-36000 max=36000,36000 step=3600,3600 default=0,0 writable=yes
+RESTORE ['zoom', '10'] exit=0
+zoom current=10 min=10 max=40 step=1 default=10 writable=yes

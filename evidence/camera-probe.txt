@@ -1,0 +1,17 @@
+unit=1 selector=02 info=03 81:08 82:err-9 83:err-9 84:09
+unit=1 selector=03 info=03 81:00 82:err-9 83:err-9 84:err-9
+unit=1 selector=04 info=0f 81:03000000 82:03000000 83:ff070000 84:01000000
+unit=1 selector=0b info=03 81:0a00 82:0a00 83:2800 84:0100
+unit=1 selector=0d info=03 81:0000000000000000 82:6073ffff6073ffff 83:a08c0000a08c0000 84:100e0000100e0000
+unit=1 selector=11 info=0b 81:00 82:err-9 83:err-9 84:err-9
+unit=3 selector=01 info=03 81:0100 82:0000 83:0400 84:0100
+unit=3 selector=02 info=03 81:8000 82:0000 83:ff00 84:0100
+unit=3 selector=03 info=03 81:8000 82:0000 83:ff00 84:0100
+unit=3 selector=04 info=0f 81:0000 82:0000 83:ff00 84:0100
+unit=3 selector=05 info=03 81:02 82:01 83:02 84:01
+unit=3 selector=06 info=03 81:0000 82:80ff 83:8000 84:0100
+unit=3 selector=07 info=03 81:8000 82:0000 83:ff00 84:0100
+unit=3 selector=08 info=03 81:8000 82:0000 83:ff00 84:0100
+unit=3 selector=09 info=03 81:8000 82:0100 83:ff00 84:0100
+unit=3 selector=0a info=0f 81:a00f 82:d007 83:4c1d 84:0a00
+unit=3 selector=0b info=03 81:01 82:err-9 83:err-9 84:err-9

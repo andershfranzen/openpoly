@@ -1,0 +1,217 @@
+[
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0xc83",
+    "name": "leftVanityBrightness",
+    "values": [
+      "0",
+      "100",
+      "1"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0xc8f",
+    "name": "rightVanityBrightness",
+    "values": [
+      "0",
+      "100",
+      "1"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0xc82",
+    "name": "statusBrightness",
+    "values": [
+      "0",
+      "100",
+      "1"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0x90a",
+    "name": "restoreDefaults",
+    "values": [
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0x607",
+    "name": "muteEarcon",
+    "values": [
+      "doubleTone",
+      "singleTone"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0x913",
+    "name": "Hold Reminder",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0x609",
+    "name": "volumeLevelTone",
+    "values": [
+      "atEveryLevel",
+      "minMaxOnly"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Enable/Disable Independent Volume Control.",
+    "hasNote": false,
+    "id": "0x806",
+    "name": "independentVolumeControl",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Vanity light independent manual control.",
+    "hasNote": false,
+    "id": "0xc8b",
+    "name": "independentAmbientLight",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Ambient light sensor Enable",
+    "hasNote": false,
+    "id": "0xc8a",
+    "name": "lightSensor",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Status LED for idle state",
+    "hasNote": false,
+    "id": "0xc84",
+    "name": "statusLEDidle",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Status LED for idle state",
+    "hasNote": false,
+    "id": "0xc85",
+    "name": "statusLEDincoming",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Status LED for active state",
+    "hasNote": false,
+    "id": "0xc86",
+    "name": "statusLEDactive",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Status LED for held state",
+    "hasNote": false,
+    "id": "0xc87",
+    "name": "statusLEDheld",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Status LED for charging state",
+    "hasNote": false,
+    "id": "0xc89",
+    "name": "statusLEDcharge",
+    "values": [
+      "false",
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Hotshot Rocket Button",
+    "hasNote": false,
+    "id": "0xc8e",
+    "name": "hotshotRocket",
+    "values": [
+      "holdResume",
+      "playPause",
+      "statusLight",
+      "lens",
+      "vanity",
+      "answerEnd",
+      "videoMute"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "",
+    "hasNote": false,
+    "id": "0x90a",
+    "name": "restoreDefaults",
+    "values": [
+      "true"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "This setting is for softphone icon",
+    "hasNote": false,
+    "id": "0xc8d",
+    "name": "softPhoneIcon",
+    "values": [
+      "zoom",
+      "teams"
+    ]
+  },
+  {
+    "autoEnabledSupported": false,
+    "description": "Status LED for charging state",
+    "hasNote": false,
+    "id": "0xc90",
+    "name": "relativeDisplayBrightness",
+    "values": [
+      "up",
+      "down"
+    ]
+  }
+]

@@ -1,0 +1,406 @@
+[
+  {
+    "description": "Vanity light independent manual control.",
+    "event": {
+      "deckardId": "0x0426"
+    },
+    "get": {
+      "deckardId": "0x0426"
+    },
+    "getResponse": {
+      "deckardId": "0x0426",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "false",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "true",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "globalSettingID": "0xC8B",
+    "messaging": "deckard",
+    "set": {
+      "deckardId": "0x0426",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "false",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "true",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "settingName": "independentAmbientLight"
+  },
+  {
+    "description": "Ambient light sensor Enable",
+    "event": {
+      "deckardId": "0x0427"
+    },
+    "get": {
+      "deckardId": "0x0427"
+    },
+    "getResponse": {
+      "deckardId": "0x0427",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "false",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "true",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "globalSettingID": "0xC8A",
+    "messaging": "deckard",
+    "set": {
+      "deckardId": "0x0427",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "false",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "true",
+          "payload": [
+            {
+              "type": "BOOLEAN",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "settingName": "lightSensor"
+  },
+  {
+    "globalSettingID": "0xC83",
+    "messaging": "rangedDeckard",
+    "description": "Left vanity light brightness control",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "event": {
+      "deckardId": "0x0e34"
+    },
+    "get": {
+      "deckardId": "0x0e34",
+      "possibleValues": [
+        {
+          "name": "off",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x13"
+            }
+          ]
+        }
+      ]
+    },
+    "getResponse": {
+      "deckardId": "0x0e34",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "currentValue",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x13"
+            },
+            {
+              "type": "BYTE",
+              "value": "0xff"
+            },
+            {
+              "type": "BYTE",
+              "value": "currentValue"
+            }
+          ]
+        }
+      ]
+    },
+    "set": {
+      "deckardId": "0x0e34",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "currentValue",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x13"
+            },
+            {
+              "type": "BYTE",
+              "value": "0xff"
+            },
+            {
+              "type": "BYTE",
+              "value": "currentValue"
+            }
+          ]
+        }
+      ]
+    },
+    "settingName": "leftVanityBrightness"
+  },
+  {
+    "globalSettingID": "0xC8F",
+    "messaging": "rangedDeckard",
+    "description": "Right vanity light brightness control",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "event": {
+      "deckardId": "0x0e34"
+    },
+    "get": {
+      "deckardId": "0x0e34",
+      "possibleValues": [
+        {
+          "name": "off",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x14"
+            }
+          ]
+        }
+      ]
+    },
+    "getResponse": {
+      "deckardId": "0x0e34",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "currentValue",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x14"
+            },
+            {
+              "type": "BYTE",
+              "value": "0xff"
+            },
+            {
+              "type": "BYTE",
+              "value": "currentValue"
+            }
+          ]
+        }
+      ]
+    },
+    "set": {
+      "deckardId": "0x0e34",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "currentValue",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x14"
+            },
+            {
+              "type": "BYTE",
+              "value": "0xff"
+            },
+            {
+              "type": "BYTE",
+              "value": "currentValue"
+            }
+          ]
+        }
+      ]
+    },
+    "settingName": "rightVanityBrightness"
+  },
+  {
+    "globalSettingID": "0xC82",
+    "messaging": "rangedDeckard",
+    "description": "Vanity light brightness control",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "event": {
+      "deckardId": "0x0e34"
+    },
+    "get": {
+      "deckardId": "0x0e34",
+      "possibleValues": [
+        {
+          "name": "off",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x12"
+            }
+          ]
+        }
+      ]
+    },
+    "getResponse": {
+      "deckardId": "0x0e34",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "currentValue",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x12"
+            },
+            {
+              "type": "BYTE",
+              "value": "0xff"
+            },
+            {
+              "type": "BYTE",
+              "value": "currentValue"
+            }
+          ]
+        }
+      ]
+    },
+    "set": {
+      "deckardId": "0x0e34",
+      "defaultValue": "false",
+      "possibleValues": [
+        {
+          "name": "currentValue",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "0x12"
+            },
+            {
+              "type": "BYTE",
+              "value": "0xff"
+            },
+            {
+              "type": "BYTE",
+              "value": "currentValue"
+            }
+          ]
+        }
+      ]
+    },
+    "settingName": "statusBrightness"
+  },
+  {
+    "settingName": "relativeDisplayBrightness",
+    "globalSettingID": "0xC90",
+    "messaging": "deckard",
+    "description": "Status LED for charging state",
+    "event": {
+      "deckardId": "0x429"
+    },
+    "get": {
+      "deckardId": "0x429"
+    },
+    "getResponse": {
+      "deckardId": "0x429",
+      "defaultValue": "up",
+      "possibleValues": [
+        {
+          "name": "up",
+          "payload": [
+            {
+              "type": "UNSIGNED_INT",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "down",
+          "payload": [
+            {
+              "type": "UNSIGNED_INT",
+              "value": "32"
+            }
+          ]
+        }
+      ]
+    },
+    "set": {
+      "deckardId": "0x429",
+      "defaultValue": "up",
+      "possibleValues": [
+        {
+          "name": "up",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "1"
+            },
+            {
+              "type": "UNSIGNED_SHORT",
+              "value": "1"
+            }
+          ]
+        },
+        {
+          "name": "down",
+          "payload": [
+            {
+              "type": "BYTE",
+              "value": "1"
+            },
+            {
+              "type": "UNSIGNED_SHORT",
+              "value": "2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

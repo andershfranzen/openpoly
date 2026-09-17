@@ -1,0 +1,18 @@
+2026-09-15 — user-confirmed observations
+
+Bottom brightness: status 10% for five seconds, restored to 100%.
+Device readbacks matched. User: "Yes it worked."
+
+Side brightness: manual on, left 0%, right 100%; user cycled rear touch pad.
+Device readbacks matched. User: "Just one side is lit".
+Physical left/right orientation not separately identified.
+
+While still lit: right 0%, left 100%, held for 12 seconds.
+User: "No, the same side stayed lit".
+
+Restored stored left/right 50%, manual off; final reads also showed sensor off,
+status 100%, and idle/incoming/active/held/charging enabled.
+A rear touch-pad cycle is needed to apply restored side settings physically;
+physical restoration has not yet been confirmed by the user.
+
+Offline script/test.sh passed after these observations.

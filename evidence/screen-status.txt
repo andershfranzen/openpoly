@@ -1,0 +1,14 @@
+Poly Studio P21 display=9 rotation=0 degrees mode=10 1920x1080 pixels=1920x1080 refresh=60.00Hz
+mode=0 800x600 pixels=800x600 refresh=60.00Hz
+mode=1 960x540 pixels=960x540 refresh=60.00Hz
+mode=2 1024x576 pixels=1024x576 refresh=60.00Hz
+mode=3 1024x768 pixels=1024x768 refresh=60.00Hz
+mode=4 1280x720 pixels=1280x720 refresh=60.00Hz
+mode=5 1280x960 pixels=1280x960 refresh=60.00Hz
+mode=6 1344x756 pixels=1344x756 refresh=60.00Hz
+mode=7 1344x1008 pixels=1344x1008 refresh=60.00Hz
+mode=8 1600x900 pixels=1600x900 refresh=60.00Hz
+mode=9 1600x1200 pixels=1600x1200 refresh=60.00Hz
+mode=10 1920x1080 pixels=1920x1080 refresh=60.00Hz
+mode=11 640x480 pixels=640x480 refresh=60.00Hz
+mode=10 1920x1080 pixels=1920x1080 refresh=60.00Hz

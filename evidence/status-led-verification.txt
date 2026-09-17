@@ -1,0 +1,7 @@
+mute indicator SET 2 original=0
+before=05020e after=05060e
+RESTORE result=2 state=05020e
+off-hook indicator SET 2 original=0
+before=05020e after=050a0e
+RESTORE result=2 state=05020e
+User observation: confirmed bottom status light visibly changed during mute-indicator test.

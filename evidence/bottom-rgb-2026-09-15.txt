@@ -1,0 +1,39 @@
+2026-09-15: direct bottom-bar register validation (visual confirmation pending)
+
+Official firmware: StudioP21_PID431A_V1.1165.71.2094_DFU_PACKAGE.zip
+Static main image SHA256:
+bd3e11161f0440d20dba19a8f01cd5a0b58357ea822c494c5f588adeaf1c52e5
+
+Normal-mode BR 0317 preset-color attempt: no matching ACK.
+BR 031b, long I2C diagnostic payload: works without test/factory mode.
+Mux address76 readback=04. No mux writes performed.
+
+Original and final register snapshots (00..0e):
+69: a4 30 82 1e 1e 1e 02 0b 05 88 88 88 88 88 88
+6a: a4 30 82 1e 1e 1e 02 0b 05 88 88 88 88 88 88
+
+Direct writes03..05 on BOTH chips:
+blue=00 00 3c, magenta=3c 00 3c. Exact readbacks passed.
+Original RGB restored with exact readback on both chips.
+
+CLI tests with exact readback:
+- six-second spectrum cycle; original registers restored
+- palette chip1, RGB0=(64,0,0), RGB1=(0,0,64), map888888ffffff
+- fade3 (control low bits=3)
+- timed RGB(64,0,64) for one second; restores prior palette
+- complete original02..0e restored after palette/fade/timed tests
+- cycle interrupted using Ctrl+C; original02..0e restored on both chips
+
+Offline script/test.sh passed: framing, integer validation, HID mappings,
+RGB scaling, palette selection, fade masking, ACK/event handling,
+failed-write rollback, busy-mux refusal, and detected mid-operation mux change.
+Offline firmware extractor self-test and exact ELF hash passed.
+
+Limit: mux checks/transfers are not atomic. Addresses69/6a are reused on
+other mux channels. IDa4 does not distinguish the bottom chips. Firmware
+status events can override colors. No exclusive control claim is made.
+User confirmation of perceived RGB colors and physical module order is pending.
+
+Later user confirmation: after RGB(64,0,64), user replied "Perfect".
+Purple is physically confirmed. Final side-control session restored RGB(64,0,64)
+with exact bottom register readback after leaving both side lamps at30%.

@@ -1,0 +1,9 @@
+Initial: manual=off sensor=off left=50 right=50 status=100.
+SET waits for BR command ACK type6, length6 (wire ID only). GET immediately after SET was dropped; waiting ACK fixed sequencing.
+manual off -> on -> off: acknowledgement and readback matched; no visible change.
+manual on, left25 right75, restore50/50 manualoff: readback matched; user reported lamps remained off.
+With user confirming lamps on via rear touch pad: manualon, left0 right100 for10seconds, restore50/50 manualoff; readback matched; user reported no visible change.
+manualoff,left0: ACK and event emitted but GET remained50; CLI refused success and restored50.
+Temporary Poly service pause test: readback matched, restoration50/50/manualoff; visual result not reported. Services were resumed.
+Rear touch pad can turn lamps on/off with cameraoff. Neither stored brightness nor readable unknown0e0d flag changed (flag remained01). No write to unknown0e0d.
+Current configuration: original manualoff sensoroff50/50/100. User last physically turned sidesoff.

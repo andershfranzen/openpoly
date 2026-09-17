@@ -1,0 +1,66 @@
+Lighting robustness investigation, 2026-09-15
+
+Observed before fix:
+- Running old RGB cycle failed with BR send -7 (LIBUSB_ERROR_TIMEOUT).
+- Cleanup then issued more transfers; both chip restorations failed.
+- Subsequent lights list also timed out. User reconnected USB.
+- First post-reconnect cycle failed: mux08, expected04.
+- Native0317 bottom activation recovered mux04 and direct RGB readback.
+
+Root cause established for wrong-channel refusal: normal firmware/reconnect
+selects other channels. Regression tests/bar.c failed before implementation
+(assert bar_control(h,4,rgb)==0 after mux08 refusal).
+The original USB stall's firmware cause is not established. Poly Studio,
+LensService, legacyhost and CallControlApp were still running during this event.
+
+Implementation:
+- Native bottom activation only for RGB/cycle, preserving0300 prior gate.
+- Snapshot after activation is dim-white recovery baseline; existingmux04
+  preserves current snapshot. Read-only/state,fade,palette never autoactivate.
+- Cycle setup02..0e once, later framewrites only03..05,500ms hardwarefade,
+ 500ms pause betweenframes; configurable spectrumperiod(default30sec).
+- Guard mux beforewrite, before readback and after readback.
+- Two bounded recovery attempts for nonfatal failures during cycling.
+- Fatal TIMEOUT/NO_DEVICE/PIPE latches: zero later USB calls on that handle.
+- Response deadline2seconds plus at most one already-started1secondUSBtransfer.
+
+Live test1:
+- lights sides30 30 passed and left mux on a side channel.
+- lights cycle90 30 autonomously activated bottom channel.
+- Completed90seconds/3spectrumperiods, exit0; baseline restoration readback passed.
+- Poly services were still running for this test.
+
+Vendor isolation for test2:
+- Quit Poly Studio normally.
+- launchctl bootout gui/501/com.poly.LensControlService
+- launchctl bootout gui/501/com.poly.LegacyHostApp
+- launchctl bootout gui/501/com.poly.CallControlApp
+- Verified no PolyLauncher/LensService/legacyhost/CallControlApp/UI processes.
+- This unloads this login session only; no files or disabled-job settings changed.
+- To reload, use launchctl bootstrap gui/501 with each original plist:
+ /Library/LaunchAgents/com.poly.LensControlService.plist
+ /Library/LaunchAgents/com.poly.LegacyHostApp.plist
+ /Library/LaunchAgents/com.poly.CallControlApp.plist
+- Set bottom RGB64,0,64 with readback, then started cycle120 30.
+
+Limits: host mux guards are not atomic with firmware operations. Native
+activation/recovery does not restore prior firmware animation state. A fully
+unresponsive device still needs reconnection; software does not reset it.
+
+Test2 result: FAIL before120seconds, USBTIMEOUT writing6a:03. Faultlatch
+correctly prevented all further transfers; restoration reportedunverified.
+Subsequentbar-state GET alsoTIMEOUT. Polyservicesremainedstopped.
+A standalone libusb_reset_device(audio047f431a) also returnedTIMEOUT.
+AskeduserforanotherUSBreconnection; codeworkcontinuedindependently.
+
+Second implementation: removeper-frame diagnosticI2Centirely. bar_cycle uses
+native0317[12,color,100] with color2red(143,0,0),1green(7,80,15),4blue(5,5,112).
+SetCONTROLhardwarefadeonce(initialreadbackverified), then nativephasecommands
+only; nativefirmwarepreservesfade. InitialphaseRGBverifiedonce; laterphases
+useACKsubmissionverification, not repeatedI2Cregisterreads. Gate0300heldfor
+animationandrestoredonexit. FullregisterbaselinealsorestoredwhenUSBhealthy.
+This is a newhypothesis toverifylive, notproof yetthatallstallsareeliminated.
+
+Independentreviewalsofoundretainedmux04replycouldaliasone-bytechipread.
+Regressionshowedfadefailedbeforefencefix; nowa manualGETfencesallone-byte
+chipreads andthefull offlinetestscriptpasses for thatfix.

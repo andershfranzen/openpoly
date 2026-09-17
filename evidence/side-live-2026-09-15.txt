@@ -1,0 +1,25 @@
+Firmware 1.1165.71.2094, direct BR transport via C/libusb.
+No vendor dylib loaded, no firmware update, no rear-pad action.
+
+0300 initial GET -> type4/error0012 (mode0).
+0300 SET01 -> ACK or type10/01; GET -> type3/01.
+0317 SET [13,08,30] then [14,08,30] -> ACK.
+0300 SET00 -> ACK or type10/00; GET -> type4/error0012.
+User confirms both side lamps on.
+
+Early test selector13=0,selector14=30: user reports only their LEFT lamp on.
+User explicitly confirms left as facing the screen. Therefore public CLI maps
+LEFT to selector14/mux02, RIGHT to selector13/mux01, reversing firmware labels.
+
+CLI independent0/30,30/0,30/30 writes passed readback on addresses69/6a.
+At30%, registers03..08=39hex,09..0e=88; at0%, enablebits09..0e=0.
+Mode restoration checked after every command. After correcting orientation,
+CLI sides30 30 again passes readback. Bottom restored to RGB64,0,64 separately.
+
+Firmware-configured third address68 rejected reads of1 and15bytes on mux02:
+de0101100b00000007031b0001493200 (type7 bridge failure).
+CLI verifies only69/6a per side. Third-chip population remains unresolved.
+
+script/test.sh passes offline checks including changed-state events,
+prior-mode preservation, upward10% rounding, side orientation, readback failure,
+partial-operation failure, wrong chip ID/mux, and no raw side I2C writes.

@@ -1,0 +1,8 @@
+input device=131 channels=1
+mic-volume=75.000% channel=0 writable=yes
+mic-mute=off channel=0 writable=yes
+output device=135 channels=2
+speaker-volume=100.000% channel=1 writable=yes
+speaker-volume=100.000% channel=2 writable=yes
+speaker-mute=off channel=1 writable=yes
+speaker-mute=off channel=2 writable=yes

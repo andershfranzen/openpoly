@@ -1,0 +1,10 @@
+manual=off
+sensor=off
+left=50%
+right=50%
+status=100%
+idle=on
+incoming=on
+active=on
+held=on
+charging=on

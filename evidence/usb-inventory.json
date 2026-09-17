@@ -1,0 +1,32 @@
+[
+  {
+    "USB Product Name": "Poly Studio P21 webcam",
+    "USB Vendor Name": "Polycom Inc.",
+    "idVendor": 2397,
+    "idProduct": 37528,
+    "bcdDevice": 389,
+    "bcdUSB": 512,
+    "locationID": 1376256,
+    "UsbLinkSpeed": 480000000
+  },
+  {
+    "USB Product Name": "Poly Studio P21",
+    "USB Vendor Name": "Plantronics",
+    "idVendor": 1151,
+    "idProduct": 17178,
+    "bcdDevice": 8340,
+    "bcdUSB": 512,
+    "locationID": 1245184,
+    "UsbLinkSpeed": 12000000
+  },
+  {
+    "USB Product Name": "Poly_Studio_P21_Display",
+    "USB Vendor Name": "DisplayLink",
+    "idVendor": 6121,
+    "idProduct": 65304,
+    "bcdDevice": 12344,
+    "bcdUSB": 800,
+    "locationID": 2359296,
+    "UsbLinkSpeed": 5000000000
+  }
+]
