@@ -1,4 +1,9 @@
 /build/
+/dist/
+macos/.build/
 .DS_Store
 .codebase-memory/
 .codex/
+
+/.build/
+/docs/agent-work/

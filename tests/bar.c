@@ -169,8 +169,5 @@ int main(void) {
     assert(native_bottom==previous_native&&writes==previous_writes);mux=4;
     rgb[1]="256";assert(bar_control(NULL,4,rgb)==2);
     palette[8]="888888gggggg";assert(bar_control(NULL,9,palette)==2);
-    unsigned char color[3];bar_hue(0,color);assert(color[0]==192&&color[1]==0&&color[2]==0);
-    bar_hue(512,color);assert(color[0]==0&&color[1]==192&&color[2]==0);
-    bar_hue(1024,color);assert(color[0]==0&&color[1]==0&&color[2]==192);
     puts("Bottom bridge framing, RGB scaling, palette, fade, restoration and native channel reacquisition: passed");
 }

@@ -1,6 +1,8 @@
-# p21ctl
+# OpenPoly
 
-Direct controls for a connected **Poly Studio P21** on macOS. Uses CoreAudio and libusb, with no Poly SDK, service, or account calls.
+An independent native macOS app and command-line tools for a connected **Poly
+Studio P21**. OpenPoly controls the display, lights, camera and audio without the
+Poly Studio app, DisplayLink Manager, a Poly SDK, service or account.
 
 ## Build and use
 
@@ -30,6 +32,44 @@ Requires Apple command-line tools and Homebrew `libusb` (already installed on th
 Omit the value to read a control. `audio default-input` and `audio default-output` select the P21 as the system default. `camera brightness` controls the **camera image**, not the screen backlight. `hid mute-indicator` sets an indicator; use `audio mic-mute` to mute audio.
 
 `./script/test.sh` runs offline checks without changing hardware. The Codex Run action builds and shows command help.
+
+## Native app and independent display
+
+OpenPoly includes a native **Display** page alongside the light, camera and audio
+controls. Its display driver has been visually verified on the physical P21,
+including a usable desktop and mouse pointer. The final installed build was also
+verified after DisplayLink Manager and HP Poly Studio were removed from the Mac.
+
+```sh
+./script/build_native.sh
+open dist/OpenPoly.app --args --open-display
+```
+
+Allow **Screen Recording** for OpenPoly, then choose **Start display**. The Display
+page provides hardware brightness, resolution and refresh controls. The physical
+panel uses 1920×1080 at 60 Hz; virtual desktop modes are 1920×1080, 1600×900,
+1280×720 and 960×540 at 60 or 30 Hz. Capture targets 60 updates per second and
+reuses unchanged image regions; the displayed update rate drops when the desktop
+is still. A fixed 60 FPS under every workload has not been established.
+
+The bundle contains the display helpers, libusb and a verified standalone Node
+runtime. It requires no DisplayLink installation, separate Node, Homebrew or
+Python runtime. The display path uses fresh authenticated sessions and directly
+encodes/transmits Firefly Haar frames over USB. It bundles no vendor executable,
+firmware package, captured screen image or captured session key.
+
+The prototype can also run from the source tree:
+
+```sh
+./driver/macos/build.sh
+node driver/macos/p21-display.cjs --seconds 30 --take-over
+node driver/macos/p21-display.cjs --run --take-over
+```
+
+The bounded command restores an initially running DisplayLink Manager after the
+trial. Ctrl+C stops a continuous run. The native app remembers an enabled display,
+provides an **Open at login** setting, and retries a disconnected USB session.
+See [driver details](driver/macos/README.md) and [native app usage](macos/README.md).
 
 ## Bottom bar: direct RGB and cycling
 

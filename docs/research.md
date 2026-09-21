@@ -7,10 +7,16 @@
 
 The P21 is best treated as a composite USB peripheral. Its camera and audio function are standard USB classes, so an application can use the operating system's UVC/UAC APIs without Poly Studio/Lens. The LCD is a DisplayLink USB graphics function: Poly's own documentation explicitly requires display software for the display, while stating that the camera, speakers, microphone, and vanity lights work without that software.
 
+OpenPoly now supplies that display software itself. Its clean-room macOS Firefly
+driver, native app, authenticated session setup, encoder and USB transport have
+been verified on the physical P21 after DisplayLink Manager and HP Poly Studio
+were removed. The sections below retain the earlier research trail that led to
+the implementation.
+
 This gives two practical meanings of “without the Poly app”:
 
-1. **Use native class drivers for camera and audio, and keep an independent DisplayLink host driver for the LCD.** This removes the Poly application from the data path, but still depends on DisplayLink/Synaptics software for the screen.
-2. **Remove every vendor driver as well.** This requires implementing the P21's DisplayLink rendering protocol. I found public host plumbing (EVDI) and documentation for older DisplayLink chips, but no public P21-specific rendering or LED command protocol. EVDI alone is not the USB wire protocol.
+1. **Use native class drivers for camera and audio.** macOS provides those paths directly.
+2. **Use OpenPoly's independent driver for the LCD.** The implementation in [`driver/macos`](../driver/macos/README.md) completes the P21 Firefly rendering path without a vendor driver. The open-source [Vino v3 Linux driver](https://github.com/FireBurn/linux/tree/vino-v3) supplied useful modern DL3 protocol evidence, although it did not contain a Firefly hardware profile and EVDI alone was not the USB wire protocol.
 
 Poly's Lens Desktop help is also explicit about the boundary: the display software is required for the P21 display, but the camera, speakers, microphone, and vanity lights can be used without it ([Poly Lens Desktop Online Help, pp. 41–42](https://kaas.hpcloud.hp.com/pdf-public/pdf_8545851_en-US-1.pdf)). The P21 user guide separately says that the guide's features can be used without Lens Desktop ([Poly Studio P21 User Guide, p. 2](https://kaas.hpcloud.hp.com/pdf-public/pdf_8708481_en-US-1.pdf)). P21 support was removed from Lens Desktop 2.0 and HP Poly Studio Desktop 5.0 ([Poly Lens supported devices](https://info.lens.poly.com/docs/lensapps/Studio%20Desktop/desktop-supported-dev)).
 
@@ -60,7 +66,7 @@ The P21 release notes list separate DisplayLink driver requirements alongside Le
 
 DisplayLink's [EVDI project](https://displaylink.github.io/evdi/) is a host-side virtual DRM/display interface. Its documentation describes EVDI as the userspace/Linux virtual display layer used as the base of the DisplayLink Ubuntu driver for USB 3 docks and adapters. The [public displaylink-rpm package specification](https://github.com/displaylink-rpm/displaylink-rpm/blob/master/displaylink.spec) shows the typical host architecture: a udev trigger recognizes DisplayLink vendor ID `17e9` and starts a proprietary `displaylink-driver.service`; the package itself links to EVDI and a proprietary Synaptics driver.
 
-This establishes an actionable, lower-risk route: use the platform's DisplayLink driver and EVDI/equivalent host display plumbing, while using native UVC/UAC/HID APIs for the other functions. It does **not** establish that EVDI can send a P21 stream by itself. The actual DisplayLink USB encoder/transport remains in the proprietary driver.
+This establishes that EVDI cannot send a P21 stream by itself. A newer open-source project, [Vino v3](https://github.com/FireBurn/linux/tree/vino-v3), supplies a modern DL3 USB encoder and transport on Linux, but its current hardware profiles cover Ella, Ridge, and Navarro. Its [profile table](https://raw.githubusercontent.com/FireBurn/linux/vino-v3/drivers/gpu/drm/vino/profile.rs) recognizes `FflyMoni` as Firefly without defining the memory and register profile needed to initialize that family safely. Porting Vino and establishing that missing profile is therefore the concrete replacement path.
 
 ### A documented legacy protocol is not a P21 protocol
 

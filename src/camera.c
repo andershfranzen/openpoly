@@ -43,6 +43,19 @@ static int64_t decode(const unsigned char *b, int width, int sign) {
     if (sign && (n & (1U << (width*8-1)))) return (int64_t)n - (1LL << (width*8));
     return n;
 }
+static int readbackAccepted(const Control *c,const unsigned char *requested,
+                            const unsigned char *actual,const unsigned char *lo,
+                            const unsigned char *hi,const unsigned char *step,int size) {
+    if(!memcmp(requested,actual,size))return 1;
+    if(strcmp(c->name,"zoom")||c->components!=1)return 0;
+    int64_t wanted=decode(requested,c->width,c->sign),got=decode(actual,c->width,c->sign);
+    int64_t min=decode(lo,c->width,c->sign),max=decode(hi,c->width,c->sign);
+    int64_t increment=decode(step,c->width,c->sign),delta=got-wanted;
+    if(delta<0)delta=-delta;
+    // Measured P21 zoom quantization: 11 -> 10 and 15 -> 13. Keep every
+    // other mismatch on the existing restore path.
+    return got>=min&&got<=max&&(!increment||(got-min)%increment==0)&&delta<=2;
+}
 static void values(const unsigned char *b, const Control *c) {
     for (int i=0; i<c->components; i++) printf("%s%" PRId64, i ? "," : "", decode(b+i*c->width,c->width,c->sign));
 }
@@ -97,7 +110,7 @@ static int set(libusb_device_handle *h, const Control *c, char **args) {
     }
     unsigned char actual[8]={0};
     r=transfer(h,c,0x81,actual,size);
-    if(r || memcmp(b,actual,size)) {
+    if(r || !readbackAccepted(c,b,actual,lo,hi,step,size)) {
         fprintf(stderr,"%s write readback did not match (P21 may round zoom; pan/tilt requires zoom > 10)\n",c->name);
         restoreControl(h,c,before,size);
         show(h,c); return 1;
